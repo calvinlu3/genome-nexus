@@ -273,7 +273,7 @@ public abstract class BaseVariantAnnotationServiceImpl implements VariantAnnotat
     private void saveToIndexDb(String normalizedVariant, VariantAnnotation annotation) {
         Gson gson = new Gson();
         DBObject dbObject = BasicDBObject.parse(gson.toJson(this.buildIndex(annotation)));
-        this.indexRepository.saveDBObject("index", normalizedVariant, dbObject);
+        // this.indexRepository.saveDBObject("index", normalizedVariant, dbObject);
     }
 
 

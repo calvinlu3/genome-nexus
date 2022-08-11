@@ -99,9 +99,10 @@ public abstract class BaseCachedExternalResourceFetcher<T, R extends MongoReposi
                 }
 
                 // save everything to the cache as a properly parsed JSON
-                if (saveRawValue) {
-                    this.repository.saveDBObject(this.collection, id, rawValue);
-                }
+                // if (saveRawValue) {
+                //     this.repository.saveDBObject(this.collection, id, rawValue);
+                // }
+                LOG.info("did not save to mongo");
             }
             catch (DataIntegrityViolationException e) {
                 // in case of data integrity violation exception, do not bloat the logs
@@ -236,7 +237,7 @@ public abstract class BaseCachedExternalResourceFetcher<T, R extends MongoReposi
             .filter(o -> o.get("_id") != null)
             .collect(Collectors.toList());
 
-        this.repository.saveDBObjects(this.collection, dbObjects);
+        // this.repository.saveDBObjects(this.collection, dbObjects);
     }
 
     private Map<String, T> initIdToInstanceMap(Set<String> ids)
